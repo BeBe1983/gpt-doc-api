@@ -8,6 +8,8 @@ DOCUMENT_ID = '1zTVBxrfzztv3irl6QCYZjbpgd3AYoTVKQrMB3FzW1yw'
 import os
 import json
 
+SCOPES = ['https://www.googleapis.com/auth/documents']
+
 service_account_info = json.loads(os.environ.get("GOOGLE_CREDENTIALS"))
 
 creds = service_account.Credentials.from_service_account_info(
