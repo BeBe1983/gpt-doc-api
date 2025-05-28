@@ -5,12 +5,13 @@ from googleapiclient.discovery import build
 # הגדרות בסיס
 app = Flask(__name__)
 DOCUMENT_ID = '1zTVBxrfzztv3irl6QCYZjbpgd3AYoTVKQrMB3FzW1yw'
-SERVICE_ACCOUNT_FILE = 'credentials.json'
+import os
+import json
 
-# הגדרת ההרשאות
-SCOPES = ['https://www.googleapis.com/auth/documents']
-creds = service_account.Credentials.from_service_account_file(
-    SERVICE_ACCOUNT_FILE, scopes=SCOPES
+service_account_info = json.loads(os.environ.get("GOOGLE_CREDENTIALS"))
+
+creds = service_account.Credentials.from_service_account_info(
+    service_account_info, scopes=SCOPES
 )
 
 # בניית שירות ה־Docs
